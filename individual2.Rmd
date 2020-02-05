@@ -1,0 +1,34 @@
+---
+title: "individual2"
+author: "YangfanCai/yangfanc"
+date: "2/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+head(choco)
+```
+
+
+
+```{r}
+chocho1 <- choco$Rating
+chocho1
+hist(chocho1)
+boxplot(chocho1)
+```
+
+
+```{r}
+summary(choco)
+summary(choco[choco$Cocoa.Pct < 61, ])
+summary(choco[choco$Cocoa.Pct > 91, ])
+```
+
+
