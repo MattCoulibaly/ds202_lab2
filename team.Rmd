@@ -31,8 +31,16 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ```{r}
 choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
-str(choco)
+str(choco$Review.Date)
 # The overall number of chocolate bars rated is 1,852.
-head(choco)
-barplot(choco$Rating, choco$Review.Date)
+barplot(summary(factor(choco$Review.Date)))
+# The number of ratings increases steadily as time goes on until it starts to drop off after 2015 which is the highest point. There are also a couple of dips in the chart at 2010 and 2013
+head(sort(summary(factor(choco$Company.Location)), decreasing = TRUE), 3)
+# The three locations with the most ratings are USA, France and Canada with their rating count being 787, 158, and 132 respectively. The US is way ahead but France nd Canada are much closer to each other.
+# What are the 3 companies with the lowest cocoa percentage? And what was their average cocoa percentage?
+head(sort(choco$Cocoa.Pct, decreasing = FALSE))
+choco[choco$Cocoa.Pct < 51, ]
+summary(choco[choco$Cocoa.Pct < 51, ])
+# The bottom 3 companies with the lowest cocoa percentage were AMMA, Chokolat Elot, and Luker. Their average cocoa percentage is 46.
+# To work through this problem I first started by sorting the dataset in an ascending order. The output of this helped me see that the 3 lowest percentages had less than 51 percent cocoa. After that, I printed out all the rows in the dataset that had less than 51 percent cocoa in them to see the lowest 3 companies. Once I found this information, to find the mean I took the summary() of the previous product which was the three lowest companies.
 ```
