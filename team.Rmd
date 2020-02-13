@@ -31,6 +31,10 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ```{r}
 choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+str(choco)
+# The overall number of chocolate bars rated is 1,852.
+head(choco)
+barplot(choco$Rating, choco$Review.Date)
 str(choco$Review.Date)
 # The overall number of chocolate bars rated is 1,852.
 barplot(summary(factor(choco$Review.Date)))
